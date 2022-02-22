@@ -1,7 +1,7 @@
+from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 from tkinter import filedialog
-from ttkthemes import ThemedTk
 from tkcalendar import Calendar
 import datetime
 from docxtpl import DocxTemplate
@@ -9,6 +9,7 @@ import os
 import subprocess
 import time
 import sys
+import tkinter
 
 #Get Date
 now = datetime.datetime.now()
@@ -26,10 +27,8 @@ os.makedirs(schoolWorkPath, exist_ok=True)
 FILEBROWSER_PATH = os.path.join(os.getenv('WINDIR'), 'explorer.exe')
 
 #Create Window
-window = ThemedTk(theme="azure.tcl")
-window.tk.call("source", "azure.tcl")
-window.tk.call("set_theme", "light")
-
+window = Tk()
+window.title('School Docs Assist')
 #Create Calender
 cal = Calendar(window, selectmode = 'day',
                year = now.year, month = now.month,
