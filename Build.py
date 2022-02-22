@@ -1,7 +1,7 @@
 import sys
 from cx_Freeze import setup, Executable
 
-build_exe_options = {"packages" : ["os", "tkinter", "tkcalendar", "docx", "datetime", "docxtpl", "os", "subprocess", "time", "sys"], "include_files" : ["StandardTemplate.docx"]}
+build_exe_options = {"packages" : ["os", "tkinter", "tkcalendar", "docx", "datetime", "docxtpl", "os", "subprocess", "time", "sys"], "include_files" : ["StandardTemplate.docx", "config.ini"]}
 
 base = None
 if sys.platform == "win32":
