@@ -3,9 +3,7 @@ import tkinter as tk
 from tkinter import filedialog
 from ttkthemes import ThemedTk
 from tkcalendar import Calendar
-from docx import Document
 import datetime
-from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docxtpl import DocxTemplate
 import os
 import subprocess
@@ -28,7 +26,9 @@ os.makedirs(schoolWorkPath, exist_ok=True)
 FILEBROWSER_PATH = os.path.join(os.getenv('WINDIR'), 'explorer.exe')
 
 #Create Window
-window = ThemedTk(theme="awbreezedark")
+window = ThemedTk(theme="azure.tcl")
+window.tk.call("source", "azure.tcl")
+window.tk.call("set_theme", "light")
 
 #Create Calender
 cal = Calendar(window, selectmode = 'day',
@@ -80,18 +80,20 @@ Refresh()
 
 #Pack And Create Labels
 Text = ttk.Label(text="Assignment Creator", font=("Helvetica", 14)).pack()
+sep1 = ttk.Separator().pack(expand=True, fill="x", pady=5)
 titleText = ttk.Label(text="Name of assignment:").pack()
 titleAssign.pack(expand=True)
 calendertext = ttk.Label(text="Pick A Date:").pack()
 cal.pack(pady=5, padx=5)
 subjectselectText = ttk.Label(text="Select Subject:").pack()
 subjectSelection.pack()
-createButton = ttk.Button(text = "Create Assignment", command=CreateDocument).pack(pady=5)
-openDir = ttk.Button(text = "Open Directory", command=OpenDir).pack(pady=5)
-RefreshButton = ttk.Button(text = "Refresh Subjects", command=Refresh).pack(pady=5)
-subjectCreateText = ttk.Label(text="Create Subject:").pack()
-subjectAssign.pack()
+createButton = ttk.Button(text = "Create Assignment", command=CreateDocument).pack(pady=15)
+sep2 = ttk.Separator().pack(expand=True, fill="x", pady=5)
+subjectCreateText = ttk.Label(text="Create Subject:").pack(pady=5)
+subjectAssign.pack(pady=5)
 CreateSubjectButton = ttk.Button(text = "Create Subject", command=CreateSubject).pack(pady=5)
+RefreshButton = ttk.Button(text = "Refresh Subjects", command=Refresh).pack(pady=5)
+openDir = ttk.Button(text = "Open Directory", command=OpenDir).pack(pady=5)
 
 
 #Loop
